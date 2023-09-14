@@ -2,13 +2,22 @@ import 'package:chatbox/Utils/Colors.dart';
 import 'package:chatbox/Utils/localdata.dart';
 import 'package:chatbox/Widgets.dart/MyText.dart';
 import 'package:chatbox/Widgets.dart/TileWidet.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Setting extends StatelessWidget {
-  const Setting({super.key});
+  Setting({super.key});
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  void setStatus() async {
+    await _firestore.collection('Users').doc(auth.currentUser!.email).update({
+      'status': 'Offline',
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +52,7 @@ class Setting extends StatelessWidget {
                         final GoogleSignIn googleSignIn = GoogleSignIn();
                         await googleSignIn.signOut();
                         await FirebaseAuth.instance.signOut();
+                        setStatus();
                         print('logout successfully');
                       },
                       icon: Icon(
@@ -81,7 +91,7 @@ class Setting extends StatelessWidget {
                         ListTileWidget(
                           imageTile: NetworkImage(images),
                           titleText: MyText(
-                            myText: name,
+                            myText: name.toUpperCase(),
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                             textColor: ColorConstant.blackColor,

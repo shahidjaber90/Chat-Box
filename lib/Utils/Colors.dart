@@ -7,4 +7,5 @@ class ColorConstant {
   static Color greenColor = const Color(0XFF24786D);
   static Color greyColor = const Color(0XFF797C7B);
   static Color bgColor = const Color(0XFFE0F9FB);
+  static Color chatColor = const Color(0XFF4F6769);
 }

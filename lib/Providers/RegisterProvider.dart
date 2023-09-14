@@ -104,27 +104,11 @@ class RegisterProvider with ChangeNotifier {
       'confirm-password': confirmPassword,
       'imageURL': img,
       'uid': auth.currentUser!.uid,
+      'status': 'unavailable',
     });
   }
 
-  // get user data
-  // Future<void> getUserData() async {
-  //   final FirebaseAuth auth = FirebaseAuth.instance;
-  //   final User user = await auth.currentUser!;
-  //   final String uid = user.uid;
-
-  //   // Get the Firestore document for the current user.
-  //   final DocumentSnapshot document =
-  //       await FirebaseFirestore.instance.collection('Users').doc(uid).get();
-  //   final String name = document['userName'];
-  //   final String email = document['email'];
-  //   final String url = document['imageURL'];
-  //   imageUrl = url;
-  //   notifyListeners();
-  //   print(name);
-  //   print(email);
-  //   print(url);
-  // }
+ 
 
   // show error msg
   void showErrorMsg(String msg) {

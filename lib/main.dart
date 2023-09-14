@@ -1,3 +1,5 @@
+import 'package:chatbox/Providers/ChatProvider.dart';
+import 'package:chatbox/Providers/SearchProvider.dart';
 import 'package:chatbox/Providers/LoginProvider.dart';
 import 'package:chatbox/Providers/RegisterProvider.dart';
 import 'package:chatbox/Screens/SplashScreen.dart';
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginProvider()),
         ChangeNotifierProvider(create: (_) => RegisterProvider()),
+        ChangeNotifierProvider(create: (_) => ChatProvider()),
+        ChangeNotifierProvider(create: (_) => SearchProvider()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                     MaterialButton(
                       onPressed: () {
                         setState(() {
-                          currentScreen = const Setting();
+                          currentScreen =  Setting();
                           _bottomNavIndex = 3;
                         });
                       },

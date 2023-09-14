@@ -6,6 +6,7 @@ class ListTileWidget extends StatelessWidget {
   Widget subTitleText;
   final qrImage;
   final badge;
+  void Function()? onTap;
   double radiusVal;
   ListTileWidget({
     super.key,
@@ -15,11 +16,13 @@ class ListTileWidget extends StatelessWidget {
     this.qrImage,
     required this.radiusVal,
     this.badge,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: CircleAvatar(
         backgroundColor: Colors.transparent,
         backgroundImage: imageTile,
